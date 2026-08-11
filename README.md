@@ -57,4 +57,4 @@ uv run python main.py
 
 ###  Bug/Suggestions:
 
-Found a bug or have a suggestion? Feel free to open an issue or send an email.
+Found a bug or have a suggestion? Feel free to open an issue.
