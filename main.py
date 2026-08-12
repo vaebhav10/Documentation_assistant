@@ -31,9 +31,9 @@ async def main():
         result = chain.invoke({'chunks':query_ans,'query':user_query})
         
         # print(query_ans)  # <-- for debug 
-        print('\n', '-'*100,'\n')
+        print('\n', '-'*101,'\n')
         print(result)        
-        print('\n', '-'*100,'\n')
+        print('\n', '-'*101,'\n')
 
 if __name__=='__main__':
     asyncio.run(main())

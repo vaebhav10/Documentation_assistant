@@ -3,14 +3,13 @@ from langchain_core.documents import Document
 
 def collect_docs(results):
     all_docs = []
-
     for r in results:
     
         if not r.success:
             continue
         
         docs = Document(
-            page_content=r.markdown,
+            page_content=r.markdown.fit_markdown,
             metadata ={
                 'url': r.url,
                 'title':r.metadata['title']
