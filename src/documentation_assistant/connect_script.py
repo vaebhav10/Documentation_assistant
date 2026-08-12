@@ -10,18 +10,18 @@ from documentation_assistant.crawler import crawl_page
         
 async def execute_pipeline(query_url,retrieve_all):
     
-    """ If already present return retriever """
-    if check_existence(query_url):
-        print("\nPreload data used!\n")
-        vs =  get_vector_store(query_url)
-        
-        return vs.as_retriever()
     
     """ For the entire documentation """
     parsed = urlparse(query_url)
     home_url= f'{parsed.scheme}://{parsed.netloc}/'
+    
     if retrieve_all:
         
+        if check_existence(home_url):
+            print("\nPreload data used!\n")
+            vs =  get_vector_store(home_url)
+            
+            return vs.as_retriever()
         """crawl entire hyperlinks
         If sitemap exists --> get all the links """
         all_links = get_sitemap(home_url)
@@ -36,6 +36,12 @@ async def execute_pipeline(query_url,retrieve_all):
             
     ## For documents of the url page ONLY
     else :
+        if check_existence(query_url):
+            print("\nPreload data used!\n")
+            vs =  get_vector_store(query_url)
+            
+            return vs.as_retriever()
+        
         result = await crawl_page(query_url,retrieve_all)
         docs = collect_docs(result)
     
