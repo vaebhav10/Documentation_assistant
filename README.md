@@ -22,6 +22,10 @@ User --> pastes documentation link:
 
     User asks the query --> similarity search --> relevant chunks --> LLM --> Answer  
 
+## Limitations:
+Since the website data extraction is done with crawl4Ai which is more suited for **static/text** heavy sites, which it may not be reliable in case of heavily JavaScript-rendered or similar websites.   
+
+
 ## How to run?  
 
 * **Prerequisites**  
