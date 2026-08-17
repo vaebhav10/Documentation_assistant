@@ -1,4 +1,6 @@
 import asyncio
+from rich.markdown import Markdown
+from rich.console import Console
 from documentation_assistant.connect_script import execute_pipeline
 from langchain_core.output_parsers import StrOutputParser
 from documentation_assistant.prompt_template import get_prompt
@@ -32,7 +34,7 @@ async def main():
         
         # print(query_ans)  # <-- for debug 
         print('\n', '-'*101,'\n')
-        print(result)        
+        Console().print(Markdown(result))        
         print('\n', '-'*101,'\n')
 
 if __name__=='__main__':
