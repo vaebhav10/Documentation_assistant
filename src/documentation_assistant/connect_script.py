@@ -17,7 +17,7 @@ async def execute_pipeline(query_url,retrieve_all):
     if retrieve_all:
         
         if check_existence(home_url):
-            print("\nPreload data used!\n")
+            print("\nPreloaded data used!\n")
             vs =  get_vector_store(home_url)
             
             return vs.as_retriever()
