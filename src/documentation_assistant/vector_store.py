@@ -2,6 +2,8 @@ from langchain_chroma import Chroma
 import hashlib
 from models.Model import get_embedding_model
 from documentation_assistant.config import DATA_DIR
+from langchain_ollama import OllamaEmbeddings
+
 
 
 def get_vector_store(url_id):

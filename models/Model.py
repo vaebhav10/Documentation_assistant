@@ -7,7 +7,7 @@ from langchain_huggingface import  (
 from dotenv import load_dotenv
 load_dotenv()
 
-""" For local models
+""" local inference via Ollama
     U+1F643
 """
 
@@ -18,11 +18,11 @@ def get_embedding_model():
     return Qwen
 
 def get_llm():
-    model = ChatOllama(
+    Qwen = ChatOllama(
         model='qwen3:8b',
         temperature=0.3
     )
-    return model
+    return Qwen
 
 
 # def get_embedding_model():

@@ -3,10 +3,7 @@ from documentation_assistant.doc_collector import collect_docs,get_hyperlinks
 from collections import deque
 
 
-async def get_documents_bfs(target_urls, s_exists:bool):
-    
-    """ Using Bfs """
-    
+async def get_documents_bfs(target_urls, s_exists:bool):    
     DOCUMENTS = []
     
     visited_url = set()
@@ -37,7 +34,6 @@ async def get_documents_bfs(target_urls, s_exists:bool):
         collected_docs = collect_docs(results)
         DOCUMENTS.extend(collected_docs)
         
-        """ Collect hyperlinks if sitemap doesnt exist."""
         if not s_exists:
             hyperlinks = get_hyperlinks(results)
             

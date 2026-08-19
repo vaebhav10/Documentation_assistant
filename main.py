@@ -1,25 +1,27 @@
 import asyncio
+from rich.markdown import Markdown
+from rich.console import Console
 from documentation_assistant.connect_script import execute_pipeline
 from langchain_core.output_parsers import StrOutputParser
 from documentation_assistant.prompt_template import get_prompt
 from models.Model import get_llm
-from documentation_assistant.url_indexing import get_valid_input 
+from documentation_assistant.url_indexing import get_valid_input  
+
 
 async def main():
     model= get_llm()
     parser = StrOutputParser()
     prompt = get_prompt()
 
-    """ Input part"""
     url = input ("Paste your url :\n")
     
     retrieve_all = get_valid_input()
     
-    ## if false--> single 
     retriever =await execute_pipeline(url,retrieve_all)
     chain = prompt|model|parser
 
     while True:
+        
         user_query = input("\nEnter your query: \n")
         
         if user_query.lower() in ['exit','quit']:
@@ -30,9 +32,9 @@ async def main():
         
         result = chain.invoke({'chunks':query_ans,'query':user_query})
         
-        # print(query_ans)  # <-- for debug 
+        # print(query_ans)  
         print('\n', '-'*101,'\n')
-        print(result)        
+        Console().print(Markdown(result))
         print('\n', '-'*101,'\n')
 
 if __name__=='__main__':

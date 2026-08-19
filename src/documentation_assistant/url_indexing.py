@@ -6,7 +6,7 @@ def get_name(url):
     name = hashlib.md5(url.encode()).hexdigest()
     return name
     
-def get_valid_input():
+def get_valid_input()->bool:
     valid_inputs = [0,1]
     print("Get Entire Documentation? \nInput 1 for 'yes'\nInput 0 for 'No'\n")
     while True:
