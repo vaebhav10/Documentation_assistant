@@ -29,7 +29,7 @@ async def get_documents_bfs(target_urls, s_exists:bool):
             batch.append(url)
             visited_url.add(url)
         
-        results = await crawl_page(batch,s_exists)  
+        results = await crawl_page(batch,True)  
         
         collected_docs = collect_docs(results)
         DOCUMENTS.extend(collected_docs)
