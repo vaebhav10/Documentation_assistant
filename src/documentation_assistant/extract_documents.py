@@ -1,7 +1,7 @@
 from documentation_assistant.crawler import crawl_page
 from documentation_assistant.doc_collector import collect_docs,get_hyperlinks
 from collections import deque
-
+import asyncio
 
 async def get_documents_bfs(target_urls, s_exists:bool):    
     DOCUMENTS = []
@@ -30,7 +30,8 @@ async def get_documents_bfs(target_urls, s_exists:bool):
             visited_url.add(url)
         
         results = await crawl_page(batch,True)  
-        
+        if queue:
+            await asyncio.sleep(2.0)
         collected_docs = collect_docs(results)
         DOCUMENTS.extend(collected_docs)
         
